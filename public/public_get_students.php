@@ -1,7 +1,18 @@
 <?php
 include '../config/connect.php';
 
-// This is a public API, so no authentication is required.
+// Allow requests from any origin (you can specify http://localhost:3000)
+header("Access-Control-Allow-Origin: *");
+// Allow specific HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+// Allow headers
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    // Handle preflight request
+    http_response_code(200);
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Get filter parameters

@@ -20,7 +20,7 @@ if (isset($headers['Authorization'])) {
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Sanitize input
-                $id = intval($_POST['id']); // Student ID
+                $id = intval($_POST['id']);
 
                 // Delete the student from the database
                 $sql = "DELETE FROM students WHERE id=$id";
